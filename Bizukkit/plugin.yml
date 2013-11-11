@@ -1,0 +1,29 @@
+name: Bizukkit
+main: io.github.GoDieBawb.Bizukkit.Bizukkit
+version: 0.5
+commands:
+   biz:
+      description: This command makes you sound gangsta.
+      usage: /<command> [player]
+      permission: bizukkit.gangster
+      permission-message: You don't have <permission>
+   british:
+      description: This command makes you sound proper Englishman.
+      usage: /<command> [player]
+      permission: bizukkit.british
+      permission-message: You don't have <permission>
+   pirate:
+      description: This command makes you sound like a Pirate.
+      usage: /<command> [player]
+      permission: bizukkit.pirate
+      permission-message: You don't have <permission>
+   nonsense:
+      description: This command makes talk nonsense.
+      usage: /<command> [player]
+      permission: bizukkit.nonsense
+      permission-message: You don't have <permission>
+   l33t:
+      description: This command makes speak l33t.
+      usage: /<command> [player]
+      permission: bizukkit.l33t
+      permission-message: You don't have <permission>
