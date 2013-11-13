@@ -21,12 +21,14 @@ public class Bizukkit extends JavaPlugin implements Listener {
 	BritChat    britClass    			  = new BritChat();
 	RandomChat  randomClass   			  = new RandomChat();
 	PirateChat  pirateClass 			  = new PirateChat();
+	ClassyChat  classyClass 			  = new ClassyChat();
 	
 	Set<String> ghettoflaggedPlayers      = new HashSet<String>();
 	Set<String> britFlaggedPlayers        = new HashSet<String>();
 	Set<String> leetFlaggedPlayers        = new HashSet<String>();
 	Set<String> pirateFlaggedPlayers      = new HashSet<String>();
 	Set<String> randomFlaggedPlayers      = new HashSet<String>();
+	Set<String> classyFlaggedPlayers      = new HashSet<String>();
 	String      playerName;
 	
 	
@@ -37,6 +39,7 @@ public class Bizukkit extends JavaPlugin implements Listener {
 		britClass.britEnable();
 		pirateClass.PirateEnable();
 		randomClass.RandomEnable();
+		classyClass.ClassyEnable();
 		
 		
 	}
@@ -65,7 +68,7 @@ public class Bizukkit extends JavaPlugin implements Listener {
     			
     		}
     	
-    	if(args[0].equalsIgnoreCase("gangster")) {
+    	if(args[0].equalsIgnoreCase("gangster") && sender.hasPermission("bizukkit.gangster")) {
     		
     		
     		if (ghettoflaggedPlayers.contains(playerName)){
@@ -83,7 +86,7 @@ public class Bizukkit extends JavaPlugin implements Listener {
 
     		
   
-    		} else if(args[0].equalsIgnoreCase("british")) {
+    		} else if(args[0].equalsIgnoreCase("british") && sender.hasPermission("bizukkit.british")) {
         		
         		
         		if (britFlaggedPlayers.contains(playerName)){
@@ -101,7 +104,7 @@ public class Bizukkit extends JavaPlugin implements Listener {
 
         		  
  
-    		} else if(args[0].equalsIgnoreCase("pirate")) {
+    		} else if(args[0].equalsIgnoreCase("pirate") && sender.hasPermission("bizukkit.pirate")) {
         		
         		
         		if (pirateFlaggedPlayers.contains(playerName)){
@@ -115,11 +118,12 @@ public class Bizukkit extends JavaPlugin implements Listener {
         		  britFlaggedPlayers.remove(playerName);
         		  randomFlaggedPlayers.remove(playerName);
         		  leetFlaggedPlayers.remove(playerName);
+        		  classyFlaggedPlayers.remove(playerName);
         		  }
         		
         		  
         		  
-    		} else if(args[0].equalsIgnoreCase("nonsense")) {
+    		} else if(args[0].equalsIgnoreCase("nonsense") && sender.hasPermission("bizukkit.nonsense")) {
         		
         		
         		if (randomFlaggedPlayers.contains(playerName)){
@@ -133,10 +137,11 @@ public class Bizukkit extends JavaPlugin implements Listener {
         		  britFlaggedPlayers.remove(playerName);
         		  pirateFlaggedPlayers.remove(playerName);
         		  leetFlaggedPlayers.remove(playerName);
+        		  classyFlaggedPlayers.remove(playerName);
         		  }
         		
         		  
-    		} else if(args[0].equalsIgnoreCase("l33t")) {
+    		} else if(args[0].equalsIgnoreCase("l33t") && sender.hasPermission("bizukkit.l33t")) {
         		
         		
         		if (leetFlaggedPlayers.contains(playerName)){
@@ -150,7 +155,31 @@ public class Bizukkit extends JavaPlugin implements Listener {
         		  britFlaggedPlayers.remove(playerName);
         		  pirateFlaggedPlayers.remove(playerName);
         		  randomFlaggedPlayers.remove(playerName);
+        		  classyFlaggedPlayers.remove(playerName);
         		  }
+
+    		} else if(args[0].equalsIgnoreCase("rich") && sender.hasPermission("bizukkit.rich")) {
+        		
+        		
+        		if (classyFlaggedPlayers.contains(playerName)){
+        		  sender.sendMessage(playerName + " is no longer speaking like a rich guy!");
+        		  classyFlaggedPlayers.remove(playerName);
+
+        		  } else {
+                  sender.sendMessage(playerName + " is now speaking like a rich guy!");
+                  classyFlaggedPlayers.add(playerName);
+                  ghettoflaggedPlayers.remove(playerName);
+        		  britFlaggedPlayers.remove(playerName);
+        		  pirateFlaggedPlayers.remove(playerName);
+        		  randomFlaggedPlayers.remove(playerName);
+        		  leetFlaggedPlayers.remove(playerName);
+        		  }
+        		  
+        		
+        		  //If Player doesn't have Permission
+    			  } else {
+    			  sender.sendMessage("You don't have permission to do that!");
+    			
     			  }
 		  		  return true;
 		  		  
@@ -189,7 +218,10 @@ public class Bizukkit extends JavaPlugin implements Listener {
 			} else if (leetFlaggedPlayers.contains(playerName)){
 			leetClass.makeLeet(player, playerMessage, event);
 			
-			}			    
+			} else if (classyFlaggedPlayers.contains(playerName)){
+			classyClass.makeClassy(player, playerMessage, event);
+			
+			}				    
 				
 	}
 		
