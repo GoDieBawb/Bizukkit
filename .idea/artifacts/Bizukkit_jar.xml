@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Bizukkit:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Bizukkit_jar</output-path>
+    <root id="archive" name="Bizukkit.jar">
+      <element id="module-output" name="Bizukkit" />
+      <element id="extracted-dir" path="$USER_HOME$/Desktop/Program/bukkit-1.6.4-R2.1-20131031.000035-1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
