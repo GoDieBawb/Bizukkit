@@ -22,6 +22,7 @@ public class Bizukkit extends JavaPlugin implements Listener {
 	RandomChat  randomClass   			  = new RandomChat();
 	PirateChat  pirateClass 			  = new PirateChat();
 	ClassyChat  classyClass 			  = new ClassyChat();
+    SmileyChat  smileyClass               = new SmileyChat();
 	
 	Set<String> ghettoflaggedPlayers      = new HashSet<String>();
 	Set<String> britFlaggedPlayers        = new HashSet<String>();
@@ -29,6 +30,7 @@ public class Bizukkit extends JavaPlugin implements Listener {
 	Set<String> pirateFlaggedPlayers      = new HashSet<String>();
 	Set<String> randomFlaggedPlayers      = new HashSet<String>();
 	Set<String> classyFlaggedPlayers      = new HashSet<String>();
+    Set<String> smileyFlaggedPlayers      = new HashSet<String>();
 	String      playerName;
 	
 	
@@ -174,6 +176,24 @@ public class Bizukkit extends JavaPlugin implements Listener {
         		  randomFlaggedPlayers.remove(playerName);
         		  leetFlaggedPlayers.remove(playerName);
         		  }
+
+    		} else if(args[0].equalsIgnoreCase("smiley") && sender.hasPermission("bizukkit.smiley")) {
+        		
+        		
+        		if (smileyFlaggedPlayers.contains(playerName)){
+        		  sender.sendMessage(playerName + " no longer has mega smiley!");
+        		  smileyFlaggedPlayers.remove(playerName);
+
+        		  } else {
+                  sender.sendMessage(playerName + " now has mega smileys!");
+                  smileyFlaggedPlayers.add(playerName);
+                  classyFlaggedPlayers.remove(playerName);
+                  ghettoflaggedPlayers.remove(playerName);
+        		  britFlaggedPlayers.remove(playerName);
+        		  pirateFlaggedPlayers.remove(playerName);
+        		  randomFlaggedPlayers.remove(playerName);
+        		  leetFlaggedPlayers.remove(playerName);
+        		  }
         		  
         		
         		  //If Player doesn't have Permission
@@ -221,7 +241,10 @@ public class Bizukkit extends JavaPlugin implements Listener {
 			} else if (classyFlaggedPlayers.contains(playerName)){
 			classyClass.makeClassy(player, playerMessage, event);
 			
-			}				    
+			} else if (smileyFlaggedPlayers.contains(playerName)){
+			smileyClass.makeSmiley(player, playerMessage, event);
+			
+			}		    
 				
 	}
 		
